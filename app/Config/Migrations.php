@@ -16,7 +16,7 @@ class Migrations extends BaseConfig
      * You should enable migrations whenever you intend to do a schema migration
      * and disable it back when you're done.
      */
-    public bool $enabled = true;
+    public $enabled = true;
 
     /**
      * --------------------------------------------------------------------------
@@ -27,8 +27,7 @@ class Migrations extends BaseConfig
      * When migrations runs it will store in a database table which migration
      * files have already been run.
      */
-    public string $table = 'migrations';
-
+    public $type = 'sequential';
     /**
      * --------------------------------------------------------------------------
      * Timestamp Format
@@ -46,5 +45,7 @@ class Migrations extends BaseConfig
      * - Y-m-d-His_
      * - Y_m_d_His_
      */
-    public string $timestampFormat = 'Y-m-d-His_';
+    public $timestampFormat = 'YmdHis';
+    
+    
 }
