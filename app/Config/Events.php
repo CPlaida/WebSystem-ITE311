@@ -36,6 +36,32 @@ Events::on('pre_system', static function (): void {
         ob_start(static fn ($buffer) => $buffer);
     }
 
+    // Auto-run migrations on application start
+    if (!is_cli() && ENVIRONMENT === 'development') {
+        try {
+            $db = \Config\Database::connect();
+            
+            // Always check and run migrations if needed
+            $migrate = \Config\Services::migrations();
+            
+            // Check if migration table exists, if not create it
+            if (!$db->tableExists('migrations')) {
+                $migrate->setNamespace('App');
+                $migrate->latest();
+                log_message('info', 'Auto-migration executed: All migrations run');
+            } else {
+                // Check if essential tables exist
+                if (!$db->tableExists('users') || !$db->tableExists('courses')) {
+                    $migrate->setNamespace('App');
+                    $migrate->latest();
+                    log_message('info', 'Auto-migration executed: Missing tables recreated');
+                }
+            }
+        } catch (\Exception $e) {
+            log_message('error', 'Auto-migration failed: ' . $e->getMessage());
+        }
+    }
+
     /*
      * --------------------------------------------------------------------
      * Debug Toolbar Listeners.

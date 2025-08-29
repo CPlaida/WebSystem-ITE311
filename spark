@@ -84,4 +84,27 @@ $paths = new Paths();
 // LOAD THE FRAMEWORK BOOTSTRAP FILE
 require $paths->systemDirectory . '/Boot.php';
 
+// Auto-run migrations when starting serve command
+if (isset($argv[1]) && $argv[1] === 'serve') {
+    try {
+        // Change to project directory and run migrations
+        $currentDir = getcwd();
+        chdir(__DIR__);
+        
+        // Execute migration command
+        $output = shell_exec('php spark migrate --force 2>&1');
+        
+        // Restore directory
+        chdir($currentDir);
+        
+        if (strpos($output, 'Migrations complete') !== false || strpos($output, 'Nothing to migrate') !== false) {
+            echo "Auto-migration: Database tables synchronized.\n";
+        } else {
+            echo "Migration output: " . $output . "\n";
+        }
+    } catch (\Exception $e) {
+        echo "Auto-migration warning: " . $e->getMessage() . "\n";
+    }
+}
+
 exit(Boot::bootSpark($paths));

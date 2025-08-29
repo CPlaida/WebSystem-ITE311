@@ -8,7 +8,8 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        $data = [
+        // Sample users data
+        $users = [
             [
                 'username' => 'plaida1',
                 'email' => 'admin@lms.com',
@@ -18,7 +19,7 @@ class UserSeeder extends Seeder
                 'role' => 'admin',
                 'status' => 'active',
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'username' => 'kent2',
@@ -29,7 +30,7 @@ class UserSeeder extends Seeder
                 'role' => 'instructor',
                 'status' => 'active',
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'username' => 'labasa3',
@@ -40,10 +41,13 @@ class UserSeeder extends Seeder
                 'role' => 'student',
                 'status' => 'active',
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-            ],
+                'updated_at' => date('Y-m-d H:i:s')
+            ]
         ];
 
-        $this->db->table('users')->insertBatch($data);
+        // Insert users using query builder
+        foreach ($users as $user) {
+            $this->db->table('users')->insert($user);
+        }
     }
 }

@@ -6,46 +6,14 @@ use CodeIgniter\Config\BaseConfig;
 
 class Migrations extends BaseConfig
 {
-    /**
-     * --------------------------------------------------------------------------
-     * Enable/Disable Migrations
-     * --------------------------------------------------------------------------
-     *
-     * Migrations are enabled by default.
-     *
-     * You should enable migrations whenever you intend to do a schema migration
-     * and disable it back when you're done.
-     */
     public $enabled = true;
 
-    /**
-     * --------------------------------------------------------------------------
-     * Migrations Table
-     * --------------------------------------------------------------------------
-     *
-     * This is the name of the table that will store the current migrations state.
-     * When migrations runs it will store in a database table which migration
-     * files have already been run.
-     */
-    public $type = 'sequential';
-    /**
-     * --------------------------------------------------------------------------
-     * Timestamp Format
-     * --------------------------------------------------------------------------
-     *
-     * This is the format that will be used when creating new migrations
-     * using the CLI command:
-     *   > php spark make:migration
-     *
-     * NOTE: if you set an unsupported format, migration runner will not find
-     *       your migration files.
-     *
-     * Supported formats:
-     * - YmdHis_
-     * - Y-m-d-His_
-     * - Y_m_d_His_
-     */
-    public $timestampFormat = 'YmdHis';
-    
-    
+    // use timestamp format to match migration files
+    public $type = 'timestamp';
+
+    public $table = 'migrations';
+
+    public $timestampFormat = 'Y_m_d_His_';
+
+    public $namespace = 'App\Database\Migrations';
 }
