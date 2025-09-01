@@ -11,35 +11,32 @@ class UserSeeder extends Seeder
         // Sample users data
         $users = [
             [
-                'username' => 'plaida1',
+                'Fname' => 'Cristine',
+                'Lname' => 'Plaida',
+                'MI' => 'V.',
                 'email' => 'admin@lms.com',
                 'password' => password_hash('admin123', PASSWORD_DEFAULT),
-                'first_name' => 'System',
-                'last_name' => 'Administrator',
-                'role' => 'admin',
-                'status' => 'active',
+                'role' => 'Admin',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
             [
-                'username' => 'kent2',
+                'Fname' => 'Kent',
+                'Lname' => 'Felica',
+                'MI' => 'B.',
                 'email' => 'instructor@lms.com',
                 'password' => password_hash('instructor123', PASSWORD_DEFAULT),
-                'first_name' => 'Aj',
-                'last_name' => 'Roquero',
-                'role' => 'instructor',
-                'status' => 'active',
+                'role' => 'Instructor',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
             [
-                'username' => 'labasa3',
+                'Fname' => 'Frenchie',
+                'Lname' => 'Labasa',
+                'MI' => 'D.',
                 'email' => 'student@lms.com',
                 'password' => password_hash('student123', PASSWORD_DEFAULT),
-                'first_name' => 'Zyf',
-                'last_name' => 'Diga',
-                'role' => 'student',
-                'status' => 'active',
+                'role' => 'Student',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]

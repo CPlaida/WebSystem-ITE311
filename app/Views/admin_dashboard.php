@@ -89,14 +89,14 @@
                                     <div class="list-group-item d-flex justify-content-between align-items-center">
                                         <div>
                                             <h6 class="mb-1">New Student Registration</h6>
-                                            <small class="text-muted">John Doe - john@example.com</small>
+                                            <small class="text-muted">Frenchie D. Labasa - labasa@lms.com</small>
                                         </div>
                                         <span class="badge bg-success rounded-pill">New</span>
                                     </div>
                                     <div class="list-group-item d-flex justify-content-between align-items-center">
                                         <div>
                                             <h6 class="mb-1">Instructor Login</h6>
-                                            <small class="text-muted">Prof. Smith - 2 hours ago</small>
+                                            <small class="text-muted">Prof. Kent - 2 hours ago</small>
                                         </div>
                                         <span class="badge bg-info rounded-pill">Login</span>
                                     </div>

@@ -13,9 +13,9 @@ class Auth extends BaseController
         if ($this->request->getMethod() === 'POST') {
             
             // Get form data
-            $lastname = $this->request->getPost('lastname');
-            $firstname = $this->request->getPost('firstname');
-            $middlename = $this->request->getPost('middlename');
+            $fname = $this->request->getPost('fname');
+            $lname = $this->request->getPost('lname');
+            $mi = $this->request->getPost('mi');
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
             $passwordConfirm = $this->request->getPost('password_confirm');
@@ -24,9 +24,9 @@ class Auth extends BaseController
             // Validation rules
             $validation = \Config\Services::validation();
             $validation->setRules([
-                'lastname' => 'required|min_length[2]|max_length[100]',
-                'firstname' => 'required|min_length[2]|max_length[100]',
-                'middlename' => 'max_length[100]',
+                'fname' => 'required|min_length[2]|max_length[100]',
+                'lname' => 'required|min_length[2]|max_length[100]',
+                'mi' => 'max_length[10]',
                 'email' => 'required|valid_email|is_unique[users.email]',
                 'password' => 'required|min_length[6]',
                 'password_confirm' => 'required|matches[password]',
@@ -40,9 +40,9 @@ class Auth extends BaseController
                 // Save user data
                 $db = \Config\Database::connect();
                 $data = [
-                    'lastname' => $lastname,
-                    'firstname' => $firstname,
-                    'middlename' => $middlename,
+                    'Fname' => $fname,
+                    'Lname' => $lname,
+                    'MI' => $mi,
                     'email' => $email,
                     'password' => $hashedPassword,
                     'role' => $role,
@@ -89,14 +89,14 @@ class Auth extends BaseController
                 // Verify password
                 if ($user && password_verify($password, $user->password)) {
                     // Create full name for session
-                    $fullName = trim($user->firstname . ' ' . ($user->middlename ? $user->middlename . ' ' : '') . $user->lastname);
+                    $fullName = trim($user->Fname . ' ' . ($user->MI ? $user->MI . ' ' : '') . $user->Lname);
                     
                     // Create session
                     $sessionData = [
                         'id' => $user->id,
-                        'lastname' => $user->lastname,
-                        'firstname' => $user->firstname,
-                        'middlename' => $user->middlename,
+                        'fname' => $user->Fname,
+                        'lname' => $user->Lname,
+                        'mi' => $user->MI,
                         'fullname' => $fullName,
                         'email' => $user->email,
                         'role' => $user->role,
@@ -161,9 +161,9 @@ class Auth extends BaseController
         }
         
         $data = [
-            'lastname' => session()->get('lastname'),
-            'firstname' => session()->get('firstname'),
-            'middlename' => session()->get('middlename'),
+            'fname' => session()->get('fname'),
+            'lname' => session()->get('lname'),
+            'mi' => session()->get('mi'),
             'fullname' => session()->get('fullname'),
             'email' => session()->get('email'),
             'role' => session()->get('role')
@@ -180,9 +180,9 @@ class Auth extends BaseController
         }
         
         $data = [
-            'lastname' => session()->get('lastname'),
-            'firstname' => session()->get('firstname'),
-            'middlename' => session()->get('middlename'),
+            'fname' => session()->get('fname'),
+            'lname' => session()->get('lname'),
+            'mi' => session()->get('mi'),
             'fullname' => session()->get('fullname'),
             'email' => session()->get('email'),
             'role' => session()->get('role')
@@ -199,9 +199,9 @@ class Auth extends BaseController
         }
         
         $data = [
-            'lastname' => session()->get('lastname'),
-            'firstname' => session()->get('firstname'),
-            'middlename' => session()->get('middlename'),
+            'fname' => session()->get('fname'),
+            'lname' => session()->get('lname'),
+            'mi' => session()->get('mi'),
             'fullname' => session()->get('fullname'),
             'email' => session()->get('email'),
             'role' => session()->get('role')

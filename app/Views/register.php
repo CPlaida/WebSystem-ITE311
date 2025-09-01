@@ -41,13 +41,13 @@
                         <!-- Registration Form -->
                         <form method="POST" action="<?= base_url('/register') ?>">
                             <div class="mb-3">
-                                <input type="text" class="form-control" name="firstname" placeholder="First Name" required>
+                                <input type="text" class="form-control" name="fname" placeholder="First Name" required>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" name="lastname" placeholder="Last Name" required>
+                                <input type="text" class="form-control" name="lname" placeholder="Last Name" required>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" name="middlename" placeholder="Middle Name">
+                                <input type="text" class="form-control" name="mi" placeholder="Middle Initial">
                             </div>
                             <div class="mb-3">
                                 <input type="email" class="form-control" name="email" placeholder="Email" required>
@@ -73,6 +73,10 @@
 
                         <div class="text-center mt-3">
                             <a href="<?= base_url('/login') ?>">Already have an account?</a>
+                        </div>
+                        
+                        <div class="text-center mt-2">
+                            <a href="<?= base_url('/') ?>">Back to Home</a>
                         </div>
                     </div>
                 </div>
