@@ -1,0 +1,18 @@
+DEBUG - 2025-09-02 03:53:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-02 13:35:39 --> mysqli_sql_exception: Table 'users' already exists in C:\xampp\htdocs\ITE311-PLAIDA\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\ITE311-PLAIDA\app\Database\Migrations\2025_08_24_155341_CreateUsersTable.php(56): CodeIgniter\Database\Forge->createTable('users')
+#5 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\ITE311-PLAIDA\app\Config\Events.php(56): CodeIgniter\Database\MigrationRunner->latest()
+#8 C:\xampp\htdocs\ITE311-PLAIDA\system\Events\Events.php(152): CodeIgniter\Events\Events::Config\{closure}()
+#9 C:\xampp\htdocs\ITE311-PLAIDA\system\CodeIgniter.php(339): CodeIgniter\Events\Events::trigger('pre_system')
+#10 C:\xampp\htdocs\ITE311-PLAIDA\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ITE311-PLAIDA\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\ITE311-PLAIDA\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-02 13:35:39 --> Auto-migration failed: Table 'users' already exists

@@ -11,40 +11,30 @@ class UserSeeder extends Seeder
         // Sample users data
         $users = [
             [
-                'Fname' => 'Cristine',
-                'Lname' => 'Plaida',
-                'MI' => 'V.',
+                'name' => 'Cristine V. Plaida',
                 'email' => 'admin@lms.com',
                 'password' => password_hash('admin123', PASSWORD_DEFAULT),
-                'role' => 'Admin',
+                'role' => 'admin',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
-            [
-                'Fname' => 'Kent',
-                'Lname' => 'Felica',
-                'MI' => 'B.',
-                'email' => 'instructor@lms.com',
-                'password' => password_hash('instructor123', PASSWORD_DEFAULT),
-                'role' => 'Instructor',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'Fname' => 'Frenchie',
-                'Lname' => 'Labasa',
-                'MI' => 'D.',
-                'email' => 'student@lms.com',
-                'password' => password_hash('student123', PASSWORD_DEFAULT),
-                'role' => 'Student',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]
         ];
 
-        // Insert users using query builder
+        // Insert users using query builder with duplicate check
         foreach ($users as $user) {
-            $this->db->table('users')->insert($user);
+            // Check if user with this email already exists
+            $existingUser = $this->db->table('users')
+                ->where('email', $user['email'])
+                ->get()
+                ->getRow();
+            
+            if (!$existingUser) {
+                // Only insert if user doesn't exist
+                $this->db->table('users')->insert($user);
+                echo "Inserted user: " . $user['email'] . "\n";
+            } else {
+                echo "User already exists: " . $user['email'] . " - Skipping\n";
+            }
         }
     }
 }

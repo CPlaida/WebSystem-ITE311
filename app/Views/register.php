@@ -41,24 +41,11 @@
                         <!-- Registration Form -->
                         <form method="POST" action="<?= base_url('/register') ?>">
                             <div class="mb-3">
-                                <input type="text" class="form-control" name="fname" placeholder="First Name" required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="text" class="form-control" name="lname" placeholder="Last Name" required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="text" class="form-control" name="mi" placeholder="Middle Initial">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
                             </div>
                             <div class="mb-3">
                                 <input type="email" class="form-control" name="email" placeholder="Email" required>
-                            </div>
-                            <div class="mb-3">
-                                <select class="form-select" name="role" required>
-                                    <option value="">Select Role</option>
-                                    <option value="Student">Student</option>
-                                    <option value="Instructor">Instructor</option>
-                                    <option value="Admin">Admin</option>
-                                </select>
                             </div>
                             <div class="mb-3">
                                 <input type="password" class="form-control" name="password" placeholder="Password" required>

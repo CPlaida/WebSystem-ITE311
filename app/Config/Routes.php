@@ -19,8 +19,6 @@ $routes->get('/logout', 'Auth::logout');
 $routes->get('/dashboard', 'Auth::dashboard');
 
 // Role-based Dashboard Routes
-$routes->get('/student-dashboard', 'Auth::studentDashboard');
-$routes->get('/instructor-dashboard', 'Auth::instructorDashboard');
 $routes->get('/admin-dashboard', 'Auth::adminDashboard');
 
 $routes->setAutoRoute(true);

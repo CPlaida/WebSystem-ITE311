@@ -9,7 +9,6 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<?= base_url() ?>">ITE311-PLAIDA</a>
                 <div class="navbar-nav me-auto">
                     <a class="nav-link" href="<?= base_url() ?>">Home</a>
                     <a class="nav-link" href="<?= base_url('about') ?>">About</a>
@@ -30,16 +29,16 @@
             <div class="col-md-12">
                 <div class="jumbotron bg-primary text-white p-5 rounded">
                     <h1 class="display-4">Welcome to RMMC</h1>
-                    <p class="lead">Your comprehensive learning management system for students, instructors, and administrators.</p>
+                    <p class="lead">Learning system for students and teachers.</p>
                     <?php if (!session()->get('isLoggedIn')): ?>
                         <hr class="my-4">
-                        <p>Get started by creating an account or logging in to access your personalized dashboard.</p>
+                        <p>Create account or login to start.</p>
                         <a class="btn btn-light btn-lg me-2" href="<?= base_url('register') ?>" role="button">Register</a>
                         <a class="btn btn-outline-light btn-lg" href="<?= base_url('login') ?>" role="button">Login</a>
                     <?php else: ?>
                         <hr class="my-4">
-                        <p>Welcome back! Access your role-specific dashboard to continue your work.</p>
-                        <a class="btn btn-light btn-lg" href="<?= base_url('dashboard') ?>" role="button">Go to Dashboard</a>
+                        <p>Welcome back! Go to your dashboard.</p>
+                        <a class="btn btn-light btn-lg" href="<?= base_url('dashboard') ?>" role="button">Dashboard</a>
                     <?php endif; ?>
                 </div>
             </div>
