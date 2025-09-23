@@ -50,13 +50,9 @@
                                 <button type="submit" class="btn btn-primary">Login</button>
                             </div>
                         </form>
-
-                        <div class="text-center mt-3">
-                            <a href="<?= base_url('/register') ?>">Create Account</a>
-                        </div>
                         
                         <div class="text-center mt-2">
-                            <a href="<?= base_url('/') ?>">Back to Home</a>
+                            <a href="<?= base_url('/home') ?>">Back to Home</a>
                         </div>
                     </div>
                 </div>

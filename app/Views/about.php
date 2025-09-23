@@ -10,7 +10,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
             <div class="container-fluid">
                 <div class="navbar-nav me-auto">
-                    <a class="nav-link" href="<?= base_url() ?>">Home</a>
+                    <a class="nav-link" href="<?= base_url('home') ?>">Home</a>
                     <a class="nav-link active" href="<?= base_url('about') ?>">About</a>
                     <a class="nav-link" href="<?= base_url('contact') ?>">Contact</a>
                 </div>
@@ -20,8 +20,7 @@
                         <a class="nav-link" href="<?= base_url('dashboard') ?>">Dashboard</a>
                         <a class="nav-link" href="<?= base_url('logout') ?>">Logout</a>
                     <?php else: ?>
-                        <a class="nav-link" href="<?= base_url('login') ?>">Login</a>
-                        <a class="nav-link" href="<?= base_url('register') ?>">Register</a>
+                        <a class="nav-link" href="<?= base_url('login') ?>">Login</a>    
                     <?php endif; ?>
                 </div>
             </div>

@@ -32,8 +32,7 @@
                     <p class="lead">Learning system for students and teachers.</p>
                     <?php if (!session()->get('isLoggedIn')): ?>
                         <hr class="my-4">
-                        <p>Create account or login to start.</p>
-                        <a class="btn btn-light btn-lg me-2" href="<?= base_url('register') ?>" role="button">Register</a>
+                        <p> Click login to start.</p>
                         <a class="btn btn-outline-light btn-lg" href="<?= base_url('login') ?>" role="button">Login</a>
                     <?php else: ?>
                         <hr class="my-4">

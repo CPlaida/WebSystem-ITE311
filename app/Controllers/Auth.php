@@ -3,57 +3,22 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Auth extends BaseController
 {
     // Register new user
     public function register()
     {
-        // If form is submitted
-        if ($this->request->getMethod() === 'POST') {
-            
-            // Get form data
-            $username = $this->request->getPost('username');
-            $email = $this->request->getPost('email');
-            $password = $this->request->getPost('password');
-            $passwordConfirm = $this->request->getPost('password_confirm');
-            
-            // Validation rules
-            $validation = \Config\Services::validation();
-            $validation->setRules([
-                'username' => 'required|min_length[2]|max_length[100]',
-                'email' => 'required|valid_email|is_unique[users.email]',
-                'password' => 'required|min_length[6]',
-                'password_confirm' => 'required|matches[password]'
-            ]);
-            
-            if ($validation->withRequest($this->request)->run()) {
-                // Hash the password
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                
-                // Save user data
-                $db = \Config\Database::connect();
-                $data = [
-                    'username' => $username,
-                    'email' => $email,
-                    'password' => $hashedPassword,
-                    'role' => 'user',
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s')
-                ];
-                
-                if ($db->table('users')->insert($data)) {
-                    session()->setFlashdata('success', 'Registration successful! Please login.');
-                    return redirect()->to('/login');
-                } else {
-                    session()->setFlashdata('error', 'Registration failed. Please try again.');
-                }
-            } else {
-                session()->setFlashdata('errors', $validation->getErrors());
-            }
+        // Public registration is disabled. Only admins can create users via admin section.
+        // Hide this endpoint by returning 404 to non-admins.
+        $role = session()->get('role');
+        if ($role !== 'admin') {
+            throw PageNotFoundException::forPageNotFound();
         }
-        
-        return view('register');
+
+        // If you plan to add an admin-only user creation UI, implement it here later.
+        throw PageNotFoundException::forPageNotFound();
     }
 
     // Login user
