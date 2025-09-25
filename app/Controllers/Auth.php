@@ -10,15 +10,12 @@ class Auth extends BaseController
     // Register new user
     public function register()
     {
-        // Public registration is disabled. Only admins can create users via admin section.
-        // Hide this endpoint by returning 404 to non-admins.
-        $role = session()->get('role');
-        if ($role !== 'admin') {
-            throw PageNotFoundException::forPageNotFound();
+        // If form is submitted
+        if ($this->request->getMethod() === 'POST') {
+            // Add your registration logic here (validation, saving user, etc.)
+            // For now, just show the form again
         }
-
-        // If you plan to add an admin-only user creation UI, implement it here later.
-        throw PageNotFoundException::forPageNotFound();
+        return view('auth/register');
     }
 
     // Login user
@@ -67,7 +64,7 @@ class Auth extends BaseController
             }
         }
         
-        return view('login');
+    return view('auth/login');
     }
 
     // Logout user

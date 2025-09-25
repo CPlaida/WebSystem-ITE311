@@ -20,6 +20,7 @@
                         <a class="nav-link" href="<?= base_url('logout') ?>">Logout</a>
                     <?php else: ?>
                         <a class="nav-link" href="<?= base_url('login') ?>">Login</a>
+                         <a class="nav-link" href="<?= base_url('register') ?>">Register</a>
                     <?php endif; ?>
                 </div>
             </div>
