@@ -14,13 +14,6 @@
                     <a class="nav-link" href="<?= base_url('about') ?>">About</a>
                     <a class="nav-link" href="<?= base_url('contact') ?>">Contact</a>
                 </div>
-                <div class="navbar-nav">
-                    <?php if (session()->get('isLoggedIn')): ?>
-                        <span class="navbar-text me-3">Welcome, <?= session()->get('fullname') ?>!</span>
-                        <a class="nav-link" href="<?= base_url('dashboard') ?>">Dashboard</a>
-                        <a class="nav-link" href="<?= base_url('logout') ?>">Logout</a>
-                    <?php endif; ?>
-                </div>
             </div>
         </nav>
 
@@ -31,15 +24,10 @@
                     <h1 class="display-4">Welcome to RMMC</h1>
                     <p class="lead">Learning system for students and teachers.</p>
                     <hr class="my-4">
-                    <?php if (!session()->get('isLoggedIn')): ?>
-                        <p>Click login or register to start.</p>
-                    <?php else: ?>
-                        <p>Welcome back! Go to your dashboard.</p>
-                    <?php endif; ?>
+                    <p>Click login or register to start.</p>
                     <a class="btn btn-outline-light btn-lg me-2" href="<?= base_url('login') ?>" role="button">Login</a>
                     <a class="btn btn-outline-light btn-lg" href="<?= base_url('register') ?>" role="button">Register</a>
                     <?php if (session()->get('isLoggedIn')): ?>
-                        <a class="btn btn-light btn-lg ms-2" href="<?= base_url('dashboard') ?>" role="button">Dashboard</a>
                     <?php endif; ?>
                 </div>
             </div>

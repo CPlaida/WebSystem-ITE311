@@ -14,14 +14,8 @@
                     <a class="nav-link active" href="<?= base_url('contact') ?>">Contact</a>
                 </div>
                 <div class="navbar-nav">
-                    <?php if (session()->get('isLoggedIn')): ?>
-                        <span class="navbar-text me-3">Welcome, <?= session()->get('fullname') ?>!</span>
-                        <a class="nav-link" href="<?= base_url('dashboard') ?>">Dashboard</a>
-                        <a class="nav-link" href="<?= base_url('logout') ?>">Logout</a>
-                    <?php else: ?>
-                        <a class="nav-link" href="<?= base_url('login') ?>">Login</a>
-                         <a class="nav-link" href="<?= base_url('register') ?>">Register</a>
-                    <?php endif; ?>
+                    <a class="nav-link" href="<?= base_url('login') ?>">Login</a>
+                    <a class="nav-link" href="<?= base_url('register') ?>">Register</a>
                 </div>
             </div>
         </nav>

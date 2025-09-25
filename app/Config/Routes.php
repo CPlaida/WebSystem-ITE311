@@ -17,9 +17,7 @@ $routes->get('/logout', 'Auth::logout');
 $routes->get('/register', 'Auth::register');
 $routes->post('/register', 'Auth::register');
 $routes->get('/dashboard', 'Auth::dashboard');
-$routes->get('/logout', 'Auth::logout');
 
-// Role-based Dashboard Routes
-$routes->get('/admin-dashboard', 'Auth::adminDashboard');
+
 
 $routes->setAutoRoute(true);
