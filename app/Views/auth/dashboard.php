@@ -6,11 +6,13 @@
         <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
     <?php endif; ?>
 
-    <!-- Welcome Message -->
-    <div class="welcome-message">
-      <h2>Welcome back, <?= $user['name'] ?>!</h2>
-      <p class="text-muted">Here's what's happening with your account today.</p>
-    </div>
+ <!-- Welcome Message -->
+<div class="welcome-message mb-4">
+<h1 class="fw-semibold text-primary mb-1">Welcome back, <?= $user['name'] ?>!</h1>
+  <p class="text-success small mb-0">Here are your latest updates.</p>
+</div>
+
+
 
     <?php
       // Wrapper: load role-specific partials

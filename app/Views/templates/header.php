@@ -37,8 +37,8 @@ $name = session('name');
       <ul class="nav nav-alt">
         <?php if ($role === 'admin'): ?>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('admin/dashboard') ?>">Admin Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">User Management</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Courses Management</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Reports & Analytics</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
         <?php elseif ($role === 'teacher'): ?>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('teacher/dashboard') ?>">Teacher Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" href="#">My Courses</a></li>
