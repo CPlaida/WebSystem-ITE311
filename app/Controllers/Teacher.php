@@ -2,17 +2,17 @@
 
 namespace App\Controllers;
 
-class Admin extends BaseController
+class Teacher extends BaseController
 { 
     public function dashboard()
     {
         // Must be logged in
-        if  (!session () ->get('isLoggedIn')) {
+        if (!session()->get('isLoggedIn')) {
             session()->setFlashdata('error', 'Please Login first.');
             return redirect()->to(base_url('login'));
         }
 
-        // Must be admin
+        // Must be teacher
         if (session('role') !== 'teacher') {
             session()->setFlashdata('error', 'Unauthorized access.');
             return redirect()->to(base_url('login'));
@@ -21,10 +21,10 @@ class Admin extends BaseController
         // Render unified wrapper with user context
         return view('auth/dashboard', [
             'user' => [
-                'name'  => session('name'),
+                'name'  => session('username') ?? session('name'),
                 'email' => session('email'),
                 'role'  => session('role'),
             ]
         ]);
-        }
+    }
 }

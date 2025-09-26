@@ -46,32 +46,18 @@
 
                         <!-- Registration Form -->
                         <form method="POST" action="<?= base_url('/register') ?>">
-                            <?= csrf_field() ?>
-                            <div class="mb-3">
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?= old('username') ?>" required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="email" class="form-control" name="email" placeholder="Email" value="<?= old('email') ?>" required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="password" class="form-control" name="password" placeholder="Password" required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="password" class="form-control" name="password_confirm" placeholder="Confirm Password" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="role" class="form-label">Role</label>
-                                <select class="form-select" id="role" name="role">
-                                    <option value="admin" <?= old('role') === 'admin' ? 'selected' : '' ?>>Admin</option>
-                                    <option value="teacher" <?= old('role') === 'teacher' ? 'selected' : '' ?>>Teacher</option>
-                                    <option value="student" <?= !old('role') || old('role') === 'student' ? 'selected' : '' ?>>Student</option>
-                                </select>
-                            </div>
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">Register</button>
-                            </div>
-                        </form>
-
+                         <?= csrf_field() ?>
+                         <input type="text" name="username" placeholder="Username" required class="form-control mb-2">
+                         <input type="email" name="email" placeholder="Email" required class="form-control mb-2">
+                         <input type="password" name="password" placeholder="Password" required class="form-control mb-2">
+                         <input type="password" name="password_confirm" placeholder="Confirm Password" required class="form-control mb-2">
+                         <select name="role" class="form-select mb-3">
+                         <option value="student" selected>Student</option>
+                         <option value="teacher">Teacher</option>
+                         <option value="admin">Admin</option>
+                         </select>
+                         <button type="submit" class="btn btn-primary w-100">Register</button>
+                         </form>
                         <div class="text-center mt-2">
                             <a href="<?= base_url('/login') ?>">Already have an account?</a>
                         </div>

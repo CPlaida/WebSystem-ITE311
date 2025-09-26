@@ -18,10 +18,12 @@ class Auth extends BaseController
         if ($this->request->getMethod() === 'POST') {
             // Set validation rules
             $rules = [
-                'name' => 'required|min_length[2]|max_length[100]',
+                'username' => 'required|min_length[2]|max_length[100]|is_unique[users.username]',
                 'email' => 'required|valid_email|is_unique[users.email]',
                 'password' => 'required|min_length[6]',
-                'password_confirm' => 'required|matches[password]'
+                'password_confirm' => 'required|matches[password]',
+                // role is optional; if provided, it must be one of enum values
+                'role' => 'permit_empty|in_list[admin,teacher,student]',
             ];
 
             if (!$this->validate($rules)) {
@@ -29,14 +31,15 @@ class Auth extends BaseController
             }
 
             // Get form data
-            $name = $this->request->getPost('name');
+            $username = $this->request->getPost('username');
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
-            $role = $this->request->getPost('role') ?? 'user';
+            // Default to 'student' to satisfy ENUM(admin,teacher,student)
+            $role = $this->request->getPost('role') ?: 'student';
 
 
             $data = [
-                'name' => $name,
+                'username' => $username,
                 'email' => $email,
                 'password'   => password_hash($password, PASSWORD_DEFAULT),
                 'role' => $role,
@@ -47,7 +50,7 @@ class Auth extends BaseController
             $db = \Config\Database::connect();
             $builder = $db->table('users');
             if ($builder->insert($data)) {
-                $session->setFlashdata('success', 'Registration successful! Please login.');
+                $session->flashdata('success', 'Registration successful! Please login.');
                 return redirect()->to('/login');
             } else {
                 $session->setFlashdata('error', 'Registration failed. Please try again.');
@@ -88,20 +91,24 @@ class Auth extends BaseController
                 // Set session data
                 $session->set([
                     'userID' => $user['id'],
-                    'name'   => $user['name'],
+                    'username' => $user['username'],
+                    // keep 'name' alias for legacy views
+                    'name'   => $user['username'],
                     'email'  => $user['email'],
                     'role'   => $user['role'],
                     'isLoggedIn' => true
                 ]);
 
+                // Prevent session fixation
+                session()->regenerate();
 
-               switch ($user['role']) {
-                case 'admin':
-                    return redirect()->to('admin/dashboard');
-                case 'teacher':
-                    return redirect()->to('teacher/dashboard');
-                case 'student':
-                    return redirect()->to('student/dashboard');
+                switch ($user['role']) {
+                    case 'admin':
+                        return redirect()->to(base_url('admin/dashboard'));
+                    case 'teacher':
+                        return redirect()->to(base_url('teacher/dashboard'));
+                    case 'student':
+                        return redirect()->to(base_url('student/dashboard'));
                 }
             } else {
                 $session->setFlashdata('error', 'Invalid email or password.');
@@ -112,12 +119,16 @@ class Auth extends BaseController
     }
 
     public function logout()
-    {
-        $session = session();
-        $session->destroy();
-        $session->setFlashdata('success', 'You have been logged out successfully.');
-        return redirect()->to('/login');
-    }
+{
+    $session = session();
+    // Remove only auth-related keys so flashdata can persist
+    $session->remove(['userID', 'username', 'name', 'email', 'role', 'isLoggedIn']);
+    // replace
+    // $session->flashdata('success', 'You have been logged out successfully.');
+    // with
+    $session->setFlashdata('success', 'You have been logged out successfully.');
+    return redirect()->to('/login');
+}
 
     public function dashboard()
     {
@@ -132,7 +143,7 @@ class Auth extends BaseController
         $data = [
             'user' => [
                 'id' => $session->get('userID'),
-                'name' => $session->get('name'),
+                'name' => $session->get('username') ?? $session->get('name'),
                 'email' => $session->get('email'),
                 'role' => $session->get('role')
             ]
