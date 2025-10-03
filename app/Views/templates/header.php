@@ -1,4 +1,4 @@
-<?php $role = session('role') ?? null; $name = session('name') ?? null; ?>
+<?php $role = session('role') ?? null; $displayName = session('username') ?? session('name') ?? 'User'; ?>
 <div class="top-header-alt">
   <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between">
     <!-- Left: Logo -->
@@ -10,16 +10,20 @@
     <nav>
       <ul class="nav nav-alt">
         <?php if ($role === 'admin'): ?>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('admin/dashboard') ?>">Admin Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Reports & Analytics</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+          <a href="<?= base_url('dashboard') ?>">Dashboard</a>
+          <li class="nav-item"><a class="nav-link" href="#">Manage Users</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">System Settings</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
         <?php elseif ($role === 'teacher'): ?>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('teacher/dashboard') ?>">Teacher Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">My Courses</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">New Lesson</a></li>
+          <a href="<?= base_url('dashboard') ?>">Dashboard</a>
+          <li class="nav-item"><a class="nav-link" href="#">My Classes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Assignments</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Grades</a></li>
         <?php elseif ($role === 'student'): ?>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('student/dashboard') ?>">Student Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">My Grades</a></li>
+          <a href="<?= base_url('dashboard') ?>">Dashboard</a>
+          <li class="nav-item"><a class="nav-link" href="#">My Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Assignments</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Grades</a></li>
         <?php else: ?>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('home') ?>">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('about') ?>">About</a></li>
@@ -33,7 +37,7 @@
       <!-- Show user dropdown only when logged in -->
       <div class="user-dropdown position-relative">
         <button class="dropdown-toggle-alt" type="button" onclick="toggleDropdown()">
-          <i class="fas fa-user-circle me-1"></i> <?= esc($name ?? 'User') ?>
+          <i class="fas fa-user-circle me-1"></i> <?= esc($displayName) ?>
         </button>
         <div class="dropdown-menu-custom position-absolute bg-white shadow rounded p-2" id="userDropdown">
           <a href="<?= base_url('logout') ?>" class="dropdown-item text-dark text-decoration-none d-block px-2 py-1">

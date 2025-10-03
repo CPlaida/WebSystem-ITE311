@@ -16,8 +16,8 @@ $routes->post('/login', 'Auth::login');
 $routes->get('/logout', 'Auth::logout');
 $routes->get('/register', 'Auth::register');
 $routes->post('/register', 'Auth::register');
+
+// Dashboard Routes for all users
 $routes->get('/dashboard', 'Auth::dashboard');
-
-
 
 $routes->setAutoRoute(true);

@@ -12,7 +12,7 @@
 
     <!-- Welcome Message -->
     <div class="alert alert-primary alert-dismissible fade show mb-4" role="alert">
-        <h1 class="fw-semibold text-primary mb-1">Welcome back, <?= esc($user['username'] ?? session('username')) ?>!</h1>
+        <h1 class="fw-semibold text-primary mb-1">Welcome back, <?= esc($user['username'] ?? session('name')) ?>!</h1>
         <p class="text-success small mb-0">Here are your latest updates.</p>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
