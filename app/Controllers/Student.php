@@ -21,7 +21,7 @@ class Student extends BaseController
         // Render unified wrapper with user context
         return view('auth/dashboard', [
             'user' => [
-                'name'  => session('username') ?? session('name'),
+                'username'  => session('username'),
                 'email' => session('email'),
                 'role'  => session('role'),
             ]

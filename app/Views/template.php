@@ -9,7 +9,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; }
 
-        /* Header*/
+        /* Header styles */
         .top-header-alt { background: #0d6efd; color: #fff; padding: 14px 20px; }
         .logo h5 { margin: 0; color: #fff; }
         .nav-alt .nav-link { color: #fff; font-weight: 500; }
@@ -18,21 +18,21 @@
         .dropdown-menu-custom { display: none; right: 0; }
         .dropdown-menu-custom.show { display: block; }
         
-        /* White margin orcontainer */
+        /* White container for main content */
         .main-content { background-color: white; margin: 0; width: 100%; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         h1, h2, h3 { margin-bottom: 1rem; color:#000; }
         p { margin-bottom: 1rem; color:#333; }
         
-        /* card */
+        /* Card style */
         .card { background-color: #f8f9fa; padding: 1.5rem; margin-bottom: 1rem; border-radius: 6px; border-left: 4px solid #3498db; }
         .form-group { margin-bottom: 1rem; }
         
-        /* label */
+         /* Label and input style */
         label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
         input, textarea { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
         input:focus, textarea:focus { outline: none; border-color: #3498db; }
 
-        /* Home page text color */
+         /* Homepage hero section */
         .home-hero { background: #0d6efd; border-radius: 8px; padding: 2.5rem; }
         .home-hero h1,
         .home-hero p,
@@ -41,10 +41,10 @@
     </style>
 </head>
 <body>
-    <!-- Header include -->
+     <!-- Header include (common for all pages) -->
     <?= $this->include('templates/header') ?>
 
-    <!-- Main Content -->
+     <!-- Main Content Section -->
     <div class="container-fluid px-0">
         <main class="main-content">
             <?= $this->renderSection('content') ?>
@@ -52,11 +52,12 @@
     </div>
 
     <script>
-      // Dropdown behavior for header user menu
+      /// Toggle dropdown menu in header when user clicks
       function toggleDropdown() {
         const menu = document.getElementById('userDropdown');
         if (menu) menu.classList.toggle('show');
       }
+      // Close dropdown if user clicks outside of it
       window.addEventListener('click', function (event) {
         const btn = document.querySelector('.dropdown-toggle-alt');
         const menu = document.getElementById('userDropdown');

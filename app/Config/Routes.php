@@ -18,8 +18,6 @@ $routes->get('/register', 'Auth::register');
 $routes->post('/register', 'Auth::register');
 $routes->get('/dashboard', 'Auth::dashboard');
 
-$routes->get('/admin/dashboard', 'Admin::dashboard');
-$routes->get('/teacher/dashboard', 'Teacher::dashboard');
-$routes->get('/student/dashboard', 'Student::dashboard');
+
 
 $routes->setAutoRoute(true);
