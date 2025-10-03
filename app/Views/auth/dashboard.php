@@ -1,18 +1,17 @@
-<?= view('templates/header', ['title' => 'Dashboard']) ?>
+<?= $this->extend('template') ?>
 
- <!-- Dashboard Content -->
- <div class="container dashboard-content">
+<?= $this->section('title') ?>Dashboard<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
     <?php if(session()->getFlashdata('success')): ?>
         <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
     <?php endif; ?>
 
- <!-- Welcome Message -->
-<div class="welcome-message mb-4">
-<h1 class="fw-semibold text-primary mb-1">Welcome back, <?= $user['name'] ?>!</h1>
-  <p class="text-success small mb-0">Here are your latest updates.</p>
-</div>
-
-
+    <!-- Welcome Message -->
+    <div class="welcome-message mb-4">
+        <h1 class="fw-semibold text-primary mb-1">Welcome back, <?= esc($user['username'] ?? session('username')) ?>!</h1>
+        <p class="text-success small mb-0">Here are your latest updates.</p>
+    </div>
 
     <?php
       // Wrapper: load role-specific partials
@@ -34,3 +33,4 @@
           break;
       }
     ?>
+<?= $this->endSection() ?>

@@ -1,40 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-4">
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-            <div class="container-fluid">
-                <div class="navbar-nav me-auto">
-                    <a class="nav-link" href="<?= base_url('home') ?>">Home</a>
-                    <a class="nav-link" href="<?= base_url('about') ?>">About</a>
-                    <a class="nav-link" href="<?= base_url('contact') ?>">Contact</a>
-                </div>
-            </div>
-        </nav>
+<?= $this->extend('template') ?>
 
-        <!-- Page Content -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron bg-primary text-white p-5 rounded">
-                    <h1 class="display-4">Welcome to RMMC</h1>
-                    <p class="lead">Learning system for students and teachers.</p>
-                    <hr class="my-4">
-                    <p>Click login or register to start.</p>
-                    <a class="btn btn-outline-light btn-lg me-2" href="<?= base_url('login') ?>" role="button">Login</a>
-                    <a class="btn btn-outline-light btn-lg" href="<?= base_url('register') ?>" role="button">Register</a>
-                    <?php if (session()->get('isLoggedIn')): ?>
-                    <?php endif; ?>
-                </div>
+<?= $this->section('title') ?>Home<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="home-hero">
+                <h1 class="display-4">Welcome to RMMC</h1>
+                <p class="lead">Learning system for students and teachers.</p>
+                <hr class="my-4">
+                <p>Click login or register to start.</p>
+                <a class="btn btn-outline-light btn-lg me-2" href="<?= base_url('login') ?>" role="button">Login</a>
+                <a class="btn btn-outline-light btn-lg" href="<?= base_url('register') ?>" role="button">Register</a>
             </div>
         </div>
-
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<?= $this->endSection() ?>
