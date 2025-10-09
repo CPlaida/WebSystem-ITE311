@@ -20,4 +20,8 @@ $routes->post('/register', 'Auth::register');
 // Dashboard Routes for all users
 $routes->get('/dashboard', 'Auth::dashboard');
 
+// AJAX enrollment route
+$routes->post('/course/enroll', 'Course::enroll');
+
+
 $routes->setAutoRoute(true);
