@@ -9,7 +9,7 @@
     <!-- Center: Navigation -->
     <nav>
       <ul class="nav nav-alt">
-         <?php if ($role === 'admin'): ?>
+        <?php if ($role === 'admin'): ?>
           <a href="<?= base_url('dashboard') ?>">Dashboard</a>
           <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" href="#">User Management</a></li>
@@ -21,13 +21,12 @@
           <li class="nav-item"><a class="nav-link" href="#">My Classes</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Assignments</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Grades</a></li>
-        <?php elseif ($role === 'student'): ?>
-          <a href="<?= base_url('dashboard') ?>">Dashboard</a>
-          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">My Courses</a></li>
+          <?php elseif ($role === 'student'): ?>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url('dashboard') ?>">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url('dashboard?view=courses') ?>">My Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Assignments</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Grades</a></li>
-        <?php else: ?>
+          <?php else: ?>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('home') ?>">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('about') ?>">About</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('contact') ?>">Contact</a></li>
