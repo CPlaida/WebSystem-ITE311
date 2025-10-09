@@ -3,9 +3,9 @@
   <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">
-        <h5 class="fw-semibold text-primary mb-3">My Courses</h5>
-        <p class="text-muted">Check your enrolled courses.</p>
-        <a href="#" class="btn btn-outline-success btn-sm">View Courses</a>
+        <h5 class="fw-semibold text-primary mb-2">My Courses</h5>
+        <div class="text-muted small mb-2">enrolled</div>
+        <div class="text-secondary small">Available course:</div>
       </div>
     </div>
   </div>
@@ -14,20 +14,18 @@
   <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">
-        <h5 class="fw-semibold text-primary mb-3">Assignments</h5>
-        <p class="text-muted">View and submit assignments.</p>
-        <a href="#" class="btn btn-outline-primary btn-sm">Check Assignments</a>
+        <h5 class="fw-semibold text-primary mb-2">Assignments</h5>
+        <div class="text-muted small">due this week</div>
       </div>
     </div>
   </div>
 
-  <!-- Grades -->
+  <!-- My Grades -->
   <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">
-        <h5 class="fw-semibold text-primary mb-3">My Grades</h5>
-        <p class="text-muted">Track your performance.</p>
-        <a href="#" class="btn btn-outline-info btn-sm">View Grades</a>
+        <h5 class="fw-semibold text-primary mb-2">My Grades</h5>
+        <div class="text-muted small">overall</div>
       </div>
     </div>
   </div>

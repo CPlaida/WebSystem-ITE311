@@ -3,24 +3,27 @@
   <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between">
     <!-- Left: Logo -->
     <div class="logo">
-      <h5>RMMC Learning Management System</h5>
+      <h5>Learning Management System</h5>
     </div>
 
     <!-- Center: Navigation -->
     <nav>
       <ul class="nav nav-alt">
-        <?php if ($role === 'admin'): ?>
+         <?php if ($role === 'admin'): ?>
           <a href="<?= base_url('dashboard') ?>">Dashboard</a>
-          <li class="nav-item"><a class="nav-link" href="#">Manage Users</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">System Settings</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">User Management</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Course Management</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Enrollment Records</a></li>
         <?php elseif ($role === 'teacher'): ?>
           <a href="<?= base_url('dashboard') ?>">Dashboard</a>
+          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" href="#">My Classes</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Assignments</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Grades</a></li>
         <?php elseif ($role === 'student'): ?>
           <a href="<?= base_url('dashboard') ?>">Dashboard</a>
+          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" href="#">My Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Assignments</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Grades</a></li>

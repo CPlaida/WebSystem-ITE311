@@ -11,7 +11,7 @@ class Auth extends BaseController
     public function register()
     {
         $session = session(); // start session
-        
+
         // If user already logged in, go to dashboard
         if ($session->get('userID')) {
             return redirect()->to('/dashboard');
@@ -118,9 +118,9 @@ class Auth extends BaseController
     public function dashboard()
     {
         $session = session();
-        
+
         // If not logged in, redirect to login
-        if (!$session->get('userID')) {
+        if (!$session->get('isLoggedIn')) {
             $session->setFlashdata('error', 'Please login to access the dashboard.');
             return redirect()->to('/login');
         }
