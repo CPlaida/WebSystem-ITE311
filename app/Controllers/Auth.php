@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Models\EnrollmentModel;
 
 class Auth extends BaseController
 {
@@ -134,6 +135,24 @@ class Auth extends BaseController
                 'role' => $session->get('role')
             ]
         ];
+
+        // Provide student courses data to the dashboard when role is student
+        if ($session->get('role') === 'student') {
+            $userId = (int) $session->get('userID');
+            $enrollModel = new EnrollmentModel();
+            $enrolled = $enrollModel->getUserEnrollments($userId);
+            $enrolledIds = array_map(fn($c) => (int) $c['id'], $enrolled);
+
+            $db = \Config\Database::connect();
+            $builder = $db->table('courses')->select('id, title, description')->where('status', 'active');
+            if (!empty($enrolledIds)) {
+                $builder->whereNotIn('id', $enrolledIds);
+            }
+            $available = $builder->get()->getResultArray();
+
+            $data['enrolledCourses'] = $enrolled;
+            $data['availableCourses'] = $available;
+        }
 
         return view('auth/dashboard', $data);
     }
