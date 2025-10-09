@@ -9,11 +9,10 @@ class CreateEnrollmentsTable extends Migration
     public function up(): void
     {
         $this->forge->addField([
-            'id'         => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
-            'user_id'    => ['type' => 'INT', 'unsigned' => true],     
-            'course_id'  => ['type' => 'INT', 'unsigned' => true],
-            'status'     => ['type' => 'VARCHAR', 'constraint' => 20, 'default' => 'enrolled'],
-            'enrolled_at'=> ['type' => 'DATETIME', 'null' => true],
+            'id'              => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'user_id'         => ['type' => 'INT', 'unsigned' => true],
+            'course_id'       => ['type' => 'INT', 'unsigned' => true],
+            'enrollment_date' => ['type' => 'DATETIME', 'null' => true],
         ]);
 
         $this->forge->addKey('id', true);
