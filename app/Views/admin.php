@@ -1,33 +1,30 @@
 <div class="row g-4">
-  <!-- Manage Users -->
-  <div class="col-md-4">
+ <!-- Users summary -->
+ <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">
-        <h5 class="fw-semibold text-primary mb-3">User Management</h5>
-        <p class="text-muted">Add, update, or remove users.</p>
-        <a href="#" class="btn btn-outline-success btn-sm">Manage Users</a>
+        <h5 class="fw-semibold text-primary mb-2">Users</h5>
+        <div class="text-muted small">registered</div>
       </div>
     </div>
   </div>
 
-  <!-- System Settings -->
+  <!-- Courses summary -->
   <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">
-        <h5 class="fw-semibold text-primary mb-3">System Settings</h5>
-        <p class="text-muted">Configure platform settings.</p>
-        <a href="#" class="btn btn-outline-primary btn-sm">Open Settings</a>
+        <h5 class="fw-semibold text-primary mb-2">Courses</h5>
+        <div class="text-muted small">active</div>
       </div>
     </div>
   </div>
 
-  <!-- Reports -->
+  <!-- Enrollment summary -->
   <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">
-        <h5 class="fw-semibold text-primary mb-3">Reports & Analytics</h5>
-        <p class="text-muted">View system reports and analytics.</p>
-        <a href="#" class="btn btn-outline-info btn-sm">View Reports</a>
+        <h5 class="fw-semibold text-primary mb-2">Enrollments</h5>
+        <div class="text-muted small">students enrolled</div>
       </div>
     </div>
   </div>

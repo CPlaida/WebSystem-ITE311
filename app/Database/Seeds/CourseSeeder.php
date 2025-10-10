@@ -8,47 +8,63 @@ class CourseSeeder extends Seeder
 {
     public function run()
     {
-        $data = [
-            [
-                'title' => 'Introduction to Web Development',
-                'description' => 'Learn the fundamentals of HTML, CSS, and JavaScript for building modern websites.',
-                'instructor_id' => 2,
-                'status' => 'active',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'title' => 'Database Management Systems',
-                'description' => 'Comprehensive course on database design, SQL, and data management principles.',
-                'instructor_id' => 2,
-                'status' => 'active',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'title' => 'Advanced PHP Programming',
-                'description' => 'Master PHP frameworks, object-oriented programming, and web application development.',
-                'instructor_id' => 2,
-                'status' => 'active',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]
-        ];
+        $db = \Config\Database::connect();
 
-        // Insert courses
-        foreach ($data as $course) {
-            $this->db->table('courses')->insert($course);
+        // Ensure there is at least one instructor (teacher/admin) for FK
+        $user = $db->table('users')
+            ->whereIn('role', ['teacher', 'admin'])
+            ->get()
+            ->getRowArray();
+
+        if (!$user) {
+            // Create a fallback teacher
+            $db->table('users')->insert([
+                'username'   => 'instructor1',
+                'email'      => 'instructor1@example.com',
+                'password'   => password_hash('password', PASSWORD_DEFAULT),
+                'role'       => 'teacher',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]);
+            $instructorId = (int) $db->insertID();
+        } else {
+            $instructorId = (int) $user['id'];
         }
 
-        // Insert sample enrollments
-        $enrollments = [
-            ['user_id' => 3, 'course_id' => 1, 'status' => 'active', 'enrolled_at' => date('Y-m-d H:i:s')],
-            ['user_id' => 3, 'course_id' => 2, 'status' => 'active', 'enrolled_at' => date('Y-m-d H:i:s')],
-            ['user_id' => 3, 'course_id' => 3, 'status' => 'active', 'enrolled_at' => date('Y-m-d H:i:s')]
+        // Your desired default courses
+        $courses = [
+            [
+                'title'         => 'Web System and Development',
+                'description'   => 'This course teaches the basic skills in creating websites using HTML, CSS, and JavaScript.',
+                'instructor_id' => $instructorId,
+                'status'        => 'active',
+                'created_at'    => date('Y-m-d H:i:s'),
+                'updated_at'    => date('Y-m-d H:i:s'),
+            ],
+            [
+                'title'         => 'Advance Database System',
+                'description'   => 'This course focuses on database design, SQL commands, and data management techniques.',
+                'instructor_id' => $instructorId,
+                'status'        => 'active',
+                'created_at'    => date('Y-m-d H:i:s'),
+                'updated_at'    => date('Y-m-d H:i:s'),
+            ],
+            [
+                'title'         => 'System Analysis and Design',
+                'description'   => 'This course covers the steps and methods in analyzing, designing, and developing information systems.',
+                'instructor_id' => $instructorId,
+                'status'        => 'active',
+                'created_at'    => date('Y-m-d H:i:s'),
+                'updated_at'    => date('Y-m-d H:i:s'),
+            ],
         ];
 
-        foreach ($enrollments as $enrollment) {
-            $this->db->table('enrollments')->insert($enrollment);
+        // Insert only if not already present (by unique title)
+        foreach ($courses as $course) {
+            $exists = $db->table('courses')->where('title', $course['title'])->get()->getRowArray();
+            if (!$exists) {
+                $db->table('courses')->insert($course);
+            }
         }
     }
 }

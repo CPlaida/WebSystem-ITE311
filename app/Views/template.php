@@ -67,6 +67,23 @@
         }
       });
     </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+      // CSRF setup: send X-CSRF-TOKEN header from cookie (cookie name from Security.php)
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+      }
+      $.ajaxSetup({
+        beforeSend: function(xhr) {
+          // Use cookie name configured in app/Config/Security.php
+          const token = getCookie('csrf_cookie_name');  // must be this exact cookie name
+          if (token) xhr.setRequestHeader('X-CSRF-TOKEN', token);
+        }
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
