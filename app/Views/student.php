@@ -5,7 +5,9 @@
   $enrolledCount  = isset($enrolledCourses) && is_array($enrolledCourses) ? count($enrolledCourses) : 0;
   $availableCount = isset($availableCourses) && is_array($availableCourses) ? count($availableCourses) : 0;
 ?>
-<!-- Dashboard contents -->
+
+
+<!-- Dashboard cards shown when not viewing 'courses' -->
 <div class="row g-4">
   <!-- My Courses card -->
   <div class="col-md-4">
@@ -122,7 +124,7 @@
         if (resp && resp.success) {
           $('#join-alert').removeClass().addClass('alert alert-success').text(resp.message || 'Enrolled!').show();
 
-          const $row = $btn.closest('[data-course-id=\"' + courseId + '\"]');
+          const $row = $btn.closest('[data-course-id="' + courseId + '"]');
           const title = resp.course?.title || $row.find('.fw-semibold').text();
           const desc = resp.course?.description || $row.find('small').text();
 

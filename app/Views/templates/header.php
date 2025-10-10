@@ -3,7 +3,7 @@
   <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between">
     <!-- Left: Logo -->
     <div class="logo">
-      <h5>RMMC Learning Management System</h5>
+      <h5>Learning Management System</h5>
     </div>
 
     <!-- Center: Navigation -->

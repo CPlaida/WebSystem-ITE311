@@ -1,5 +1,5 @@
 <div class="row g-4">
- <!-- My Classes summary -->
+  <!-- My Classes -->
   <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <!-- Assignments summary -->
+  <!-- Assignments -->
   <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-   <!-- Grades summary -->
+   <!-- Grades -->
    <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">

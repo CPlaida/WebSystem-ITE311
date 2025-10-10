@@ -1,6 +1,6 @@
 <div class="row g-4">
- <!-- Users summary -->
- <div class="col-md-4">
+  <!-- Users -->
+  <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">
         <h5 class="fw-semibold text-primary mb-2">Users</h5>
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <!-- Courses summary -->
+  <!-- Courses -->
   <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <!-- Enrollment summary -->
+  <!-- Enrollments -->
   <div class="col-md-4">
     <div class="card border-0 shadow-sm h-100">
       <div class="card-body text-center">
