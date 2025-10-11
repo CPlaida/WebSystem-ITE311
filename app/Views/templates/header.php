@@ -23,7 +23,7 @@
           <li class="nav-item"><a class="nav-link" href="#">Grades</a></li>
           <?php elseif ($role === 'student'): ?>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('dashboard') ?>">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('dashboard?view=courses') ?>">My Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url('dashboard') ?>?view=courses">My Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Assignments</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Grades</a></li>
           <?php else: ?>
