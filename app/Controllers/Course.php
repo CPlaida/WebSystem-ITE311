@@ -129,6 +129,57 @@ class Course extends BaseController
             'enrollment_date' => date('Y-m-d H:i:s'),
         ]);
         if ($saved) {
+            try {
+                $nm = new \App\Models\NotificationModel();
+
+                // Notify the student
+                $nm->insert([
+                    'user_id' => $userId,
+                    'message' => 'You have enrolled in: ' . ($course['title'] ?? ('Course #' . $courseId)),
+                    'is_read' => 0,
+                ]);
+
+                // Notify the course instructor (if exists)
+                $instructorId = (int)($course['instructor_id'] ?? 0);
+                if ($instructorId > 0) {
+                    $nm->insert([
+                        'user_id' => $instructorId,
+                        'message' => 'A student enrolled in your course: ' . ($course['title'] ?? ('Course #' . $courseId)),
+                        'is_read' => 0,
+                    ]);
+                }
+
+                // Always notify ALL teachers as well (role exactly 'teacher')
+                $teacherIds = $this->db->table('users')
+                    ->select('id')
+                    ->where('role', 'teacher')
+                    ->get()->getResultArray();
+                foreach ($teacherIds as $t) {
+                    $tid = (int)($t['id'] ?? 0);
+                    if ($tid > 0 && $tid !== $instructorId) { // avoid duplicate for instructor
+                        $nm->insert([
+                            'user_id' => $tid,
+                            'message' => 'A student enrolled in: ' . ($course['title'] ?? ('Course #' . $courseId)),
+                            'is_read' => 0,
+                        ]);
+                    }
+                }
+
+                // Notify all admins
+                $adminIds = $this->db->table('users')->select('id')->where('role', 'admin')->get()->getResultArray();
+                foreach ($adminIds as $a) {
+                    $aid = (int)($a['id'] ?? 0);
+                    if ($aid > 0) {
+                        $nm->insert([
+                            'user_id' => $aid,
+                            'message' => 'New enrollment in ' . ($course['title'] ?? ('Course #' . $courseId)),
+                            'is_read' => 0,
+                        ]);
+                    }
+                }
+            } catch (\Throwable $e) {
+            }
+
             // Flash success for next page load
             session()->setFlashdata('success', 'Successfully enrolled in ' . ($course['title'] ?? 'course') . '.');
 

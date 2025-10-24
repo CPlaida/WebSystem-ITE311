@@ -35,11 +35,13 @@ class CreateMaterialsTable extends Migration
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('course_id', 'courses', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('materials');
+        // Create only if it does not already exist (prevents duplicate-table errors)
+        $this->forge->createTable('materials', true);
     }
 
     public function down()
     {
-        $this->forge->dropTable('materials');
+        // Drop if exists for safe rollbacks across environments
+        $this->forge->dropTable('materials', true);
     }
 }

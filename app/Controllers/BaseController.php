@@ -59,5 +59,20 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = service('session');
+
+        // Share notification data across all views
+        $renderer = service('renderer');
+        $notifUnread = 0;
+        $notifRecent = [];
+        if (session()->get('isLoggedIn')) {
+            $userId = (int) (session()->get('user_id') ?? session()->get('userID') ?? 0);
+            if ($userId > 0) {
+                $nm = new \App\Models\NotificationModel();
+                $notifUnread = $nm->getUnreadCount($userId);
+                $notifRecent = $nm->getNotificationsForUser($userId, 5);
+            }
+        }
+        $renderer->setVar('notifUnread', $notifUnread);
+        $renderer->setVar('notifRecent', $notifRecent);
     }
 }

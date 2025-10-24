@@ -154,6 +154,59 @@ class Materials extends BaseController
                 'created_at' => date('Y-m-d H:i:s'),
             ]);
 
+            // Notifications: inform enrolled students of new material
+            try {
+                $course = $this->courseModel->find((int)$course_id);
+                $courseTitle = $course['title'] ?? ('Course #' . (int)$course_id);
+
+                // Get all enrolled user IDs for this course
+                $userIds = $this->enrollmentModel
+                    ->select('user_id')
+                    ->where('course_id', (int)$course_id)
+                    ->findColumn('user_id');
+
+                if (!empty($userIds)) {
+                    $nm = new \App\Models\NotificationModel();
+                    // Notify all enrolled students
+                    foreach ($userIds as $uid) {
+                        $nm->insert([
+                            'user_id' => (int)$uid,
+                            'message' => 'New material uploaded in ' . $courseTitle,
+                            'is_read' => 0,
+                        ]);
+                    }
+
+                    // Additionally notify based on actor role
+                    $actorRole = session()->get('role');
+                    if ($actorRole === 'admin') {
+                        // Admin uploaded: notify the course instructor (if any)
+                        $instructorId = (int)($course['instructor_id'] ?? 0);
+                        if ($instructorId > 0) {
+                            $nm->insert([
+                                'user_id' => $instructorId,
+                                'message' => 'Admin uploaded new material to your course: ' . $courseTitle,
+                                'is_read' => 0,
+                            ]);
+                        }
+                    } elseif ($actorRole === 'teacher') {
+                        // Teacher uploaded: notify all admins
+                        $admins = $this->enrollmentModel->db->table('users')->select('id')->where('role', 'admin')->get()->getResultArray();
+                        foreach ($admins as $a) {
+                            $aid = (int)($a['id'] ?? 0);
+                            if ($aid > 0) {
+                                $nm->insert([
+                                    'user_id' => $aid,
+                                    'message' => 'Teacher uploaded new material in ' . $courseTitle,
+                                    'is_read' => 0,
+                                ]);
+                            }
+                        }
+                    }
+                }
+            } catch (\Throwable $e) {
+                // Silent fail; uploading should still succeed
+            }
+
             return redirect()->to("/materials/course/{$course_id}")
                 ->with('success', 'Material uploaded successfully!');
         }
