@@ -49,6 +49,10 @@
   <h3 class="mb-0">My Courses</h3>
 </div>
 
+<!-- flash messages intentionally omitted here to avoid duplicate top-level alerts —
+     messages will show inside specific sections (e.g., materials/upload or enroll flow)
+-->
+
 <div class="row g-4">
   <!-- Enrolled Courses -->
   <div class="col-md-6">
@@ -65,7 +69,9 @@
                   <div class="fw-semibold"><?= esc($course['title']) ?></div>
                   <small class="text-muted"><?= esc($course['description'] ?? '') ?></small>
                 </div>
-                <span class="badge bg-success">Enrolled</span>
+                <div class="d-flex align-items-center gap-2">
+                  <a href="<?= base_url('materials/course/' . (int)$course['id']) ?>" class="btn btn-outline-primary btn-sm">Materials</a>
+                </div>
               </li>
             <?php endforeach; ?>
           </ul>
@@ -122,30 +128,9 @@
       headers: { 'X-Requested-With': 'XMLHttpRequest' },
       success: function(resp){
         if (resp && resp.success) {
-          $('#join-alert').removeClass().addClass('alert alert-success').text(resp.message || 'Enrolled!').show();
-
-          const $row = $btn.closest('[data-course-id="' + courseId + '"]');
-          const title = resp.course?.title || $row.find('.fw-semibold').text();
-          const desc = resp.course?.description || $row.find('small').text();
-
-          const enrolledItem = `
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div>
-                <div class="fw-semibold">${$('<div>').text(title).html()}</div>
-                <small class="text-muted">${$('<div>').text(desc).html()}</small>
-              </div>
-              <span class="badge bg-success">Enrolled</span>
-            </li>`;
-
-          const $enrolled = $('#enrolled-list');
-          if ($enrolled.length) {
-            $enrolled.append(enrolledItem);
-          } else {
-            const $cont = $(".card:contains('Enrolled Courses') .card-body");
-            $cont.find('.text-muted').remove();
-            $cont.append(`<ul class="list-group" id="enrolled-list">${enrolledItem}</ul>`);
-          }
-          $row.slideUp(150, function(){ $(this).remove(); });
+          // Let the server-set flash message show on full reload
+          window.location = '<?= base_url('dashboard?view=courses') ?>';
+          return;
         } else {
           $('#join-alert').removeClass().addClass('alert alert-warning').text((resp && resp.message) || 'Unable to enroll').show();
           $btn.prop('disabled', false).text('Enroll');

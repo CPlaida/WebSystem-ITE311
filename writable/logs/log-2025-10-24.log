@@ -1,0 +1,150 @@
+CRITICAL - 2025-10-24 10:45:32 --> Error: Class "App\Models\CoursesModel" not found
+[Method: GET, Route: materials/course/1]
+in APPPATH\Controllers\Materials.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Materials->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 10:45:43 --> Error: Class "App\Models\CoursesModel" not found
+[Method: GET, Route: materials/course/2]
+in APPPATH\Controllers\Materials.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Materials->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 10:46:05 --> Error: Class "App\Models\CoursesModel" not found
+[Method: GET, Route: materials/course/1]
+in APPPATH\Controllers\Materials.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Materials->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 10:46:27 --> Error: Class "App\Models\CoursesModel" not found
+[Method: GET, Route: materials/course/2]
+in APPPATH\Controllers\Materials.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Materials->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 10:48:00 --> Error: Class "App\Models\CoursesModel" not found
+[Method: GET, Route: materials/course/2]
+in APPPATH\Controllers\Materials.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Materials->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 10:50:44 --> Error: Class "App\Models\CoursesModel" not found
+[Method: GET, Route: materials/course/2]
+in APPPATH\Controllers\Materials.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Materials->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 10:56:57 --> ErrorException: Undefined property: App\Controllers\Materials::$coursesModel
+[Method: GET, Route: materials/course/1]
+in APPPATH\Controllers\Materials.php on line 27.
+ 1 APPPATH\Controllers\Materials.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Materials::$coursesModel', 'C:\\xampp\\htdocs\\ITE311-PLAIDA\\app\\Controllers\\Materials.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Materials->index('1')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Materials))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 10:57:12 --> ErrorException: Undefined property: App\Controllers\Materials::$coursesModel
+[Method: GET, Route: materials/course/1]
+in APPPATH\Controllers\Materials.php on line 27.
+ 1 APPPATH\Controllers\Materials.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Materials::$coursesModel', 'C:\\xampp\\htdocs\\ITE311-PLAIDA\\app\\Controllers\\Materials.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Materials->index('1')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Materials))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 10:57:23 --> ErrorException: Undefined property: App\Controllers\Materials::$coursesModel
+[Method: GET, Route: materials/course/2]
+in APPPATH\Controllers\Materials.php on line 27.
+ 1 APPPATH\Controllers\Materials.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Materials::$coursesModel', 'C:\\xampp\\htdocs\\ITE311-PLAIDA\\app\\Controllers\\Materials.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Materials->index('2')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Materials))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 11:00:00 --> ErrorException: Undefined property: App\Controllers\Materials::$coursesModel
+[Method: GET, Route: materials/course/2]
+in APPPATH\Controllers\Materials.php on line 27.
+ 1 APPPATH\Controllers\Materials.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Materials::$coursesModel', 'C:\\xampp\\htdocs\\ITE311-PLAIDA\\app\\Controllers\\Materials.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Materials->index('2')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Materials))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 11:00:00 --> ErrorException: Undefined property: App\Controllers\Materials::$coursesModel
+[Method: GET, Route: materials/course/2]
+in APPPATH\Controllers\Materials.php on line 27.
+ 1 APPPATH\Controllers\Materials.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Materials::$coursesModel', 'C:\\xampp\\htdocs\\ITE311-PLAIDA\\app\\Controllers\\Materials.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Materials->index('2')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Materials))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 11:00:01 --> ErrorException: Undefined property: App\Controllers\Materials::$coursesModel
+[Method: GET, Route: materials/course/2]
+in APPPATH\Controllers\Materials.php on line 27.
+ 1 APPPATH\Controllers\Materials.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Materials::$coursesModel', 'C:\\xampp\\htdocs\\ITE311-PLAIDA\\app\\Controllers\\Materials.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Materials->index('2')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Materials))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 11:00:04 --> ErrorException: Undefined property: App\Controllers\Materials::$coursesModel
+[Method: GET, Route: materials/course/1]
+in APPPATH\Controllers\Materials.php on line 27.
+ 1 APPPATH\Controllers\Materials.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Materials::$coursesModel', 'C:\\xampp\\htdocs\\ITE311-PLAIDA\\app\\Controllers\\Materials.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Materials->index('1')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Materials))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 11:00:05 --> ErrorException: Undefined property: App\Controllers\Materials::$coursesModel
+[Method: GET, Route: materials/course/1]
+in APPPATH\Controllers\Materials.php on line 27.
+ 1 APPPATH\Controllers\Materials.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Materials::$coursesModel', 'C:\\xampp\\htdocs\\ITE311-PLAIDA\\app\\Controllers\\Materials.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Materials->index('1')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Materials))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-10-24 11:13:39 --> mysqli_sql_exception: Table 'materials' already exists in C:\xampp\htdocs\ITE311-PLAIDA\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `m...', 0)
+#1 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `m...')
+#2 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `m...')
+#3 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `m...')
+#4 C:\xampp\htdocs\ITE311-PLAIDA\app\Database\Migrations\2025_10_24_104009_CreateMaterialsTable.php(38): CodeIgniter\Database\Forge->createTable('materials')
+#5 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateMaterialsTable->up()
+#6 C:\xampp\htdocs\ITE311-PLAIDA\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\ITE311-PLAIDA\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\ITE311-PLAIDA\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\ITE311-PLAIDA\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\ITE311-PLAIDA\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\ITE311-PLAIDA\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\ITE311-PLAIDA\spark(110): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
