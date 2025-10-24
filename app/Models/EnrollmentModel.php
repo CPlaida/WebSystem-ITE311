@@ -27,7 +27,7 @@ class EnrollmentModel extends Model
     public function getUserEnrollments(int $userId): array
     {
         // join with courses for display
-        return $this->select('courses.id, courses.title, courses.description')
+        return $this->select('courses.*, enrollments.enrollment_date')
                     ->join('courses', 'courses.id = enrollments.course_id', 'inner')
                     ->where('enrollments.user_id', $userId)
                     ->findAll();
