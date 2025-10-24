@@ -23,4 +23,17 @@ $routes->get('/dashboard', 'Auth::dashboard');
 // AJAX enrollment route
 $routes->post('/course/enroll', 'Course::enroll');
 
+ // header routes
+$routes->get('/admin/courses', 'Course::adminCourses');
+$routes->get('/teacher/classes', 'Course::teacherClasses');
+
+// Material management
+$routes->get('/materials/course/(:num)', 'Materials::index/$1');
+$routes->get('/materials/upload/(:num)', 'Materials::uploadForm/$1');
+$routes->post('/materials/upload', 'Materials::upload');
+$routes->get('/materials/delete/(:num)', 'Materials::delete/$1');
+$routes->get('/materials/download/(:num)', 'Materials::download/$1');
+
+
+
 $routes->setAutoRoute(true);
