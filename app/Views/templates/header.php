@@ -32,17 +32,55 @@
       </ul>
     </nav>
 
+
     <!-- Right: Auth controls -->
     <?php if (session('isLoggedIn')): ?>
-      <!-- Show user dropdown only when logged in -->
-      <div class="user-dropdown position-relative">
-        <button class="dropdown-toggle-alt" type="button" onclick="toggleDropdown()">
-          <i class="fas fa-user-circle me-1"></i> <?= esc($displayName) ?>
-        </button>
-        <div class="dropdown-menu-custom position-absolute bg-white shadow rounded p-2" id="userDropdown">
-          <a href="<?= base_url('logout') ?>" class="dropdown-item text-dark text-decoration-none d-block px-2 py-1">
-            <i class="fas fa-sign-out-alt me-2"></i>Logout
+      <!-- Right controls: notifications + user dropdown side-by-side -->
+      <div class="d-flex align-items-center gap-3">
+        <!-- Notifications bell beside username -->
+        <div class="nav-item dropdown">
+          <a class="nav-link position-relative dropdown-toggle text-white p-0" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="me-1">🔔</span>
+            <?php if (!empty($notifUnread)): ?>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notif-badge">
+                <?= (int) $notifUnread ?>
+              </span>
+            <?php else: ?>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notif-badge d-none">0</span>
+            <?php endif; ?>
           </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown" id="notifMenu" style="min-width:320px; max-height: 360px; overflow-y: auto;">
+            <li class="dropdown-header">Notifications</li>
+            <?php if (!empty($notifRecent)): ?>
+              <?php foreach ($notifRecent as $n): ?>
+                <li class="dropdown-item small" data-id="<?= (int)($n['id'] ?? 0) ?>">
+                  <div class="<?= (int)($n['is_read'] ?? 0) === 0 ? 'fw-semibold' : '' ?>">
+                    <?= esc($n['message'] ?? '') ?>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="text-muted small"><?= esc($n['created_at'] ?? '') ?></div>
+                    <?php if ((int)($n['is_read'] ?? 0) === 0): ?>
+                      <button class="btn btn-link btn-sm p-0 js-mark-read">Mark as read</button>
+                    <?php endif; ?>
+                  </div>
+                </li>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <li class="dropdown-item text-muted small">No notifications</li>
+            <?php endif; ?>
+          </ul>
+        </div>
+
+        <!-- User dropdown -->
+        <div class="user-dropdown position-relative">
+          <button class="dropdown-toggle-alt" type="button" onclick="toggleDropdown()">
+            <i class="fas fa-user-circle me-1"></i> <?= esc($displayName) ?>
+          </button>
+          <div class="dropdown-menu-custom position-absolute bg-white shadow rounded p-2" id="userDropdown">
+            <a href="<?= base_url('logout') ?>" class="dropdown-item text-dark text-decoration-none d-block px-2 py-1">
+              <i class="fas fa-sign-out-alt me-2"></i>Logout
+            </a>
+          </div>
         </div>
       </div>
     <?php endif; ?>
